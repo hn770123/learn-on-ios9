@@ -107,9 +107,9 @@ p {
 
 それでは、iOS 9のTextastic（またはお手元のテキストエディタ）を使って、実際にコードを入力して挙動を確認してみましょう。
 
-### 手順 1: `chapter2_lab.html` の作成
+### 手順 1: サンプルファイル `samples/chapter2.html` の準備
 
-Textasticで新しいファイル `chapter2_lab.html` を作成し、以下のコードを記述して保存します。
+Textasticで [`samples/chapter2.html`](./samples/chapter2.html) を開くか、新規ファイルとして以下のコードを作成します。
 
 ```html
 <!DOCTYPE html>

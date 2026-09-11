@@ -130,9 +130,9 @@ iOS 9環境でスタイリングを行う際は、以下の点に注意が必要
 
 それでは、Textastic を使って実際のコードを入力し、ボックスモデルの計算変化やスタイリングの効果を確認してみましょう。
 
-### 手順 1: `chapter3_lab.html` の作成
+### 手順 1: サンプルファイル `samples/chapter3.html` の準備
 
-Textasticで新しいファイル `chapter3_lab.html` を作成し、以下のコードを入力して保存します。
+Textasticで [`samples/chapter3.html`](./samples/chapter3.html) を開くか、新規ファイルとして以下のコードを作成します。
 
 ```html
 <!DOCTYPE html>

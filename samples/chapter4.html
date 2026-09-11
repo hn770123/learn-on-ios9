@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+======================================================================
+ モジュールヘッダー: 第4章 サンプルコード (iOS 9におけるレイアウト設計)
+ ファイル名: samples/chapter4.html
+ 概要: iOS 9 (Mobile Safari) Textastic環境で Flexbox (-webkit- プレフィックス併記)、
+       `gap` 非対応への代替手法 (ネガティブマージン法)、および
+       -webkit-overflow-scrolling: touch による慣性スクロールを実験・確認するサンプル。
+======================================================================
+-->
+<html lang="ja">
+<head>
+  <!-- 文字コード指定: 日本語の文字化け防止 -->
+  <meta charset="UTF-8">
+  <!-- ビューポート指定: iOS Mobile Safariでの最適な表示倍率設定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第4章 サンプル - iOS 9 レイアウト設計</title>
+  <style>
+    /* --------------------------------------------------
+     * モジュール内スタイル定義
+     * -------------------------------------------------- */
+
+    /* 全要素のボックスモデル初期化 */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    /* ページの基本スタイル */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background-color: #f5f5f7;
+      margin: 0;
+      padding: 16px;
+      color: #333333;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 16px;
+      color: #007aff;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    /* --------------------------------------------------
+     * 1. Flexbox ヘッダーレイアウト (左右両端揃え + 上下中央)
+     * -------------------------------------------------- */
+    .header-bar {
+      display: -webkit-flex; /* iOS 9 向け WebKit ベンダープレフィックス */
+      display: flex;         /* 標準構文 */
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+      -webkit-align-items: center;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 18px;
+      color: #1c1c1e;
+    }
+
+    .nav-btn {
+      background-color: #007aff;
+      color: #ffffff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    /* --------------------------------------------------
+     * 2. iOS 9互換 カードグリッド (ネガティブマージン法)
+     * -------------------------------------------------- */
+    .card-grid {
+      display: -webkit-flex; /* iOS 9 向け WebKit ベンダープレフィックス */
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      margin-left: -6px;  /* 外側の余白調整用ネガティブマージン */
+      margin-right: -6px;
+    }
+
+    .card-item {
+      -webkit-flex: 0 0 50%; /* iOS 9での幅50%固定 */
+      flex: 0 0 50%;
+      max-width: 50%;
+      padding-left: 6px;   /* 疑似ギャップ（左右6pxで合計12pxの間隔を形成） */
+      padding-right: 6px;
+      margin-bottom: 12px;
+      min-width: 0;        /* iOS 9 特有のFlexアイテムテキスト溢れバグ回避策 */
+    }
+
+    .card-content {
+      background-color: #ffffff;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #e5e5ea;
+    }
+
+    .card-title {
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    /* --------------------------------------------------
+     * 3. 慣性スクロールエリア
+     * -------------------------------------------------- */
+    .scroll-box {
+      height: 100px;
+      background-color: #ffffff;
+      border: 1px solid #d1d1d6;
+      border-radius: 8px;
+      padding: 12px;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch; /* iOS 9でのスムーズな慣性スクロールを有効化 */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>iOS 9 レイアウト設計ラボ (第4章サンプル)</h1>
+
+  <!-- 1. Flexbox ヘッダー -->
+  <h2>1. Flexbox ヘッダー (両端揃え)</h2>
+  <div class="header-bar">
+    <div class="logo">My App</div>
+    <button class="nav-btn">ログイン</button>
+  </div>
+
+  <!-- 2. カードグリッド (2列レイアウト) -->
+  <h2>2. iOS 9 互換 2列カードグリッド</h2>
+  <div class="card-grid">
+    <div class="card-item">
+      <div class="card-content">
+        <div class="card-title">カード 1</div>
+        <div class="card-desc">ネガティブマージン法により gap を使わずに余白を形成。</div>
+      </div>
+    </div>
+    <div class="card-item">
+      <div class="card-content">
+        <div class="card-title">カード 2</div>
+        <div class="card-desc">iOS 9 Safari でも左右均等に収まります。</div>
+      </div>
+    </div>
+    <div class="card-item">
+      <div class="card-content">
+        <div class="card-title">カード 3</div>
+        <div class="card-desc">min-width: 0 を指定してテキスト溢れを防ぎます。</div>
+      </div>
+    </div>
+    <div class="card-item">
+      <div class="card-content">
+        <div class="card-title">カード 4</div>
+        <div class="card-desc">折り返し (flex-wrap: wrap) の動作確認。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 慣性スクロール -->
+  <h2>3. iOS 9 慣性スクロール</h2>
+  <div class="scroll-box">
+    <p>スクロールエリアの1行目です。</p>
+    <p>2行目: -webkit-overflow-scrolling: touch を指定しています。</p>
+    <p>3行目: iOS 9の画面上で指をフリックしてみてください。</p>
+    <p>4行目: スムーズな慣性スクロールが体感できます。</p>
+    <p>5行目: 最後の行です。</p>
+  </div>
+
+</body>
+</html>
