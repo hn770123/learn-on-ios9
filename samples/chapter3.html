@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+======================================================================
+ モジュールヘッダー: 第3章 サンプルコード (CSSスタイリング基礎: ボックスモデルと装飾)
+ ファイル名: samples/chapter3.html
+ 概要: iOS 9 (Mobile Safari) Textastic環境でCSSボックスモデル
+       (content-box vs border-box) の計算の違いおよび各種装飾プロパティの
+       効果を実験・確認するためのサンプル。
+======================================================================
+-->
+<html lang="ja">
+<head>
+  <!-- 文字コード指定: 日本語の文字化け防止 -->
+  <meta charset="UTF-8">
+  <!-- ビューポート指定: iOS Mobile Safariでの最適な表示倍率設定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第3章 サンプル - ボックスモデルと装飾</title>
+  <style>
+    /* --------------------------------------------------
+     * モジュール内スタイル定義
+     * -------------------------------------------------- */
+
+    /* 全要素のボックスモデル初期化ルール */
+    *, *::before, *::after {
+      box-sizing: border-box; /* 全要素に border-box を基本適用 */
+    }
+
+    /* ページの全体スタイル */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background-color: #f5f5f7;
+      margin: 0;
+      padding: 20px;
+      color: #333333;
+    }
+
+    /* メインコンテナの幅制限と中央寄せ */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* デモボックス 1: border-box 設定 */
+    .box-border-box {
+      box-sizing: border-box; /* PaddingとBorderがWidthに含まれる */
+      width: 100%;
+      padding: 20px;
+      border: 5px solid #007aff; /* iOSブルーの枠線 */
+      background-color: #ffffff;
+      border-radius: 10px;        /* 角丸指定 */
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 影の装飾 */
+    }
+
+    /* デモボックス 2: content-box 設定 */
+    .box-content-box {
+      box-sizing: content-box; /* PaddingとBorderがWidthの外側に追加される */
+      width: 100%;
+      padding: 20px;
+      border: 5px solid #ff3b30; /* iOSレッドの枠線 */
+      background-color: #ffffff;
+      border-radius: 10px;        /* 角丸指定 */
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 影の装飾 */
+    }
+
+    /* 見出しラベルのスタイル */
+    .label {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- メインコンテンツ領域 -->
+  <div class="container">
+    <h1>ボックスモデル & 装飾ラボ (第3章サンプル)</h1>
+
+    <!-- 1. border-box デモ -->
+    <div class="box-border-box">
+      <div class="label">1. box-sizing: border-box (青枠)</div>
+      <p>幅 100% の中に Padding(20px) と Border(5px) が収まるため、親要素からはみ出しません。</p>
+    </div>
+
+    <!-- 2. content-box デモ -->
+    <div class="box-content-box">
+      <div class="label">2. box-sizing: content-box (赤枠)</div>
+      <p>幅 100% の外側に Padding と Border が追加されるため、画面右側にはみ出して横スクロールが発生します。</p>
+    </div>
+  </div>
+
+</body>
+</html>

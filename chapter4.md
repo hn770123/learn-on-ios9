@@ -183,9 +183,9 @@ iOS 9では、フォームの `<input>` にフォーカスが当たってソフ�
 
 Textastic を使って実際のコードを入力し、iOS 9互換の Flexbox レイアウトとギャップ代替テクニックを体験してみましょう。
 
-### 手順 1: `chapter4_lab.html` の作成
+### 手順 1: サンプルファイル `samples/chapter4.html` の準備
 
-Textasticで新しいファイル `chapter4_lab.html` を作成し、以下のコードを入力して保存します。
+Textasticで [`samples/chapter4.html`](./samples/chapter4.html) を開くか、新規ファイルとして以下のコードを作成します。
 
 ```html
 <!DOCTYPE html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+======================================================================
+ モジュールヘッダー: 第2章 サンプルコード (HTML/CSS基礎構造とページの仕組み)
+ ファイル名: samples/chapter2.html
+ 概要: iOS 9 (Mobile Safari) Textastic環境でHTMLとCSSの基本構造、
+       DOMとCSSOMのレンダリング、クラス指定の挙動を実験・確認するためのサンプル。
+======================================================================
+-->
+<html lang="ja">
+<head>
+  <!-- 文字コード指定: 日本語の文字化けを防ぐ設定 -->
+  <meta charset="UTF-8">
+  <!-- ビューポート指定: iOS Mobile Safariで画面幅をデバイスに最適化するための必須設定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第2章 サンプル - HTML/CSS基礎構造</title>
+  <style>
+    /* --------------------------------------------------
+     * モジュール内スタイル定義
+     * -------------------------------------------------- */
+
+    /* ページの全体スタイル定義 */
+    body {
+      /* iOS 9で導入されたSan Franciscoフォントを適用 */
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background-color: #f5f5f7; /* 背景色: 淡いグレー */
+      margin: 20px;              /* 全体の外側余白 */
+      color: #333333;            /* 基本テキストカラー */
+    }
+
+    /* カード型コンポーネントのスタイル定義 */
+    .card {
+      background-color: #ffffff; /* カードの背景色: 白 */
+      border-radius: 8px;        /* 角丸指定 */
+      padding: 16px;             /* 内側余白 */
+      margin-bottom: 16px;       /* カード間の下マージン */
+      border: 1px solid #ddd;    /* 薄いグレーの枠線 */
+    }
+
+    /* ハイライトテキスト用のスタイル定義 */
+    .highlight {
+      color: #e65100;     /* 強調文字色: オレンジ */
+      font-weight: bold;  /* 太字指定 */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- メインの見出し -->
+  <h1>HTML/CSS 構造確認ラボ (第2章サンプル)</h1>
+
+  <!-- カード要素 1 -->
+  <div class="card">
+    <h2>カード要素 1</h2>
+    <p>これは1つ目のカードです。CSSの <span class="highlight">.card</span> クラスによって背景色と枠線、角丸が適用されています。</p>
+  </div>
+
+  <!-- カード要素 2 -->
+  <div class="card">
+    <h2>カード要素 2</h2>
+    <p>同じクラスを指定することで、複数の要素に同じデザインを一括適用できます。</p>
+  </div>
+
+</body>
+</html>
